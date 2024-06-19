@@ -1,0 +1,13 @@
+{% extends 'insurance/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="news-detail">
+    <h1>{{ news.title }}</h1>
+    <div class="news-image">
+        <img src="{{ news.photo.url }}" alt="News Image">
+    </div>
+    <div class="news-date">{{ news.time_create|date:"d.m.Y" }}</div>
+    <div class="news-content">{{ news.content }}</div>
+</section>
+{% endblock %}

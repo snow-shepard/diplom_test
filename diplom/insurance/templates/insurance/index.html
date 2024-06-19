@@ -1,0 +1,66 @@
+{% extends 'insurance/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<section class="about">
+    <h2>Об услугах</h2>
+    <p>Защитите себя и свои владения с помощью обязательного страхования.</p>
+    <p>Мы поможем вам выбрать оптимальный полис, включая страхование ипотеки, жизни, имущества и ОСАГО.</p>
+</section>
+
+<section class="section" style="background-color: #f4f4f4;">
+    <h2>Страхование жизни, имущества, авто — это просто</h2>
+    <div class="steps">
+        <div class="step">
+            <div class="step-circle">1</div>
+            <p>Свяжитесь с оператором для подбора оптимального полиса</p>
+        </div>
+        <div class="step">
+            <div class="step-circle">2</div>
+            <p>Оплатите выбранный полис</p>
+        </div>
+        <div class="step">
+            <div class="step-circle">3</div>
+            <p>Вышлем полис на электронную почту сразу после оплаты</p>
+        </div>
+    </div>
+</section>
+
+</section>
+<section class="section services">
+    <h2>Поможем с оформлением страхования<br>выберите вид страхования</h2>
+    <div class="service-options">
+        <div class="service">
+            <img src="{% static 'insurance/images/car.png' %}" alt="ОСАГО">
+            <h3><a href="{% url 'osago' %}">ОСАГО</a></h3>
+            <p>ОСАГО — обязательное автострахование гражданской ответственности, покрывающее ущерб третьим лицам.</p>
+        </div>
+        <div class="service">
+            <img src="{% static 'insurance/images/home.png' %}" alt="Ипотечное страхование">
+            <h3><a href="{% url 'isa' %}">Ипотечное страхование</a></h3>
+            <p>Ипотечное страхование — защита кредита от рисков утраты имущества и трудоспособности.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section news">
+    <h2>Что новенького?</h2>
+    <div class="news-container">
+        {% for news in news_items %}
+            <div class="news-item">
+                <div class="news-date">{{ news.time_create|date:"d.m.Y" }}</div>
+                <div class="news-image">
+                    <img src="{{ news.photo.url }}" alt="News Image"> 
+                </div>
+                <div class="news-title">
+                    <a href="{% url 'news_detail' news.pk %}">{{ news.title }}</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="more-news">
+        <a href="{% url 'news_list' %}">Ещё больше новостей</a>
+    </div>
+{% endblock %}
+

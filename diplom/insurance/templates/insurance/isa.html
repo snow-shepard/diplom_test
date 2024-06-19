@@ -1,0 +1,53 @@
+{% extends 'insurance/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<section class="about">
+    <h2>ИПОТЕЧНОЕ СТРАХОВАНИЕ ОНЛАЙН ЗА 5 МИН</h2>
+    <p>Быстрое онлайн оформление полиса с отправкой на вашу почту.</p>
+</section>
+
+<section class="offer-section">
+    <h2>Выбирайте лучшее предложение среди 20 страховых компаний</h2>
+    <div class="buttons">
+        <a href="https://wa.me/79381000856" class="btn">Заказать с нами ипотечное страхование</a>
+        <a href="{% url 'osf' %}" class="btn">Оформить самостоятельно</a>
+    </div>
+</section>
+
+<section class="section" style="background-color: #f4f4f4;">
+    <h2>Страхование жизни, имущества, авто — это просто</h2>
+    <div class="steps">
+        <div class="step">
+            <div class="step-circle">1</div>
+            <p>Свяжитесь с оператором для подбора оптимального полиса</p>
+        </div>
+        <div class="step">
+            <div class="step-circle">2</div>
+            <p>Оплатите выбранный полис</p>
+        </div>
+        <div class="step">
+            <div class="step-circle">3</div>
+            <p>Вышлем полис на электронную почту сразу после оплаты</p>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="faq-section">
+        <h2>Часто задаваемые вопросы</h2>
+        {% for faq in faq_items %}
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)">
+                <span>{{ faq.question }}</span>
+                <span class="plus-icon">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>{{ faq.answer }}</p>
+            </div>
+            </div>
+            {% endfor %}
+        </div>
+    <script src="{% static 'insurance/js/jss.js' %}"></script>
+</section>
+{% endblock %}

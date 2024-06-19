@@ -1,0 +1,23 @@
+{% extends 'insurance/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<section>
+    <div class="faq-section">
+        <h2>Часто задаваемые вопросы</h2>
+        {% for faq in faq_items %}
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(this)">
+                    <span>{{ faq.question }}</span>
+                    <span class="plus-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>{{ faq.answer }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <script src="{% static 'insurance/js/jss.js' %}"></script>
+</section>
+{% endblock %}
